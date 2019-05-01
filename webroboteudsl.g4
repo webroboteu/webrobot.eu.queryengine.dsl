@@ -25,9 +25,9 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  *
  * Project      : webrobot.eu query engine; an ANTLR4 grammar for webrobot.eu project
- * Developed by : Roger Giuffrè, roger@webrobot.eu
+ * Developed by : Roger Giuffrè, giuffresoft@gmail.com
  */
-grammar webroboteuSQL;
+grammar webroboteudsl;
 
 parse
  : ( sql_stmt_list | error )* EOF

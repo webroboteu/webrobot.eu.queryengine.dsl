@@ -41,10 +41,20 @@ error
  ;
 
 sql_stmt_list
- : ';'* query_stmt ( ';'+ query_stmt )* ';'*;                                     //only if is necessary            
+ : ';'* istruction_stmt ( ';'+ istruction_stmt )* ';'*;                                     //only if is necessary            
+
+istruction_stmt : query_stmt | config_oauth_stmt | config_clause_stmt;
+config_oauth_stmt : K_CONFIG K_OAUTHKEYS K_WITH K_KEYS '(' list_keys ')';
+
+config_clause_stmt : K_CONFIG type_clauses K_WITH K_PARAMETERS '(' list_parameters_stmt ')';
+
+type_clauses : C_EXPLODE | C_EXPLORE | C_FETCH | C_FLATSELECT | C_FLATTEN | C_JOIN | C_SELECT | C_VISITEXPLORE | C_VISITJOIN | C_WGETEXPLORE | C_WGETJOIN;
+
+list_keys : literal_value (COMMA literal_value)*;
+
 query_stmt : fetch_stmt (K_THEN (sql_stmt (K_THEN sql_stmt)*))*;
 
-sql_stmt : fetch_stmt | explore_stmt | join_stmt | flatten_stmt | flatselect_stmt | select_stmt;
+sql_stmt : fetch_stmt | explore_stmt | join_stmt | flatten_stmt | flatselect_stmt | select_stmt | wgetjoin_stmt | wgetexplore_stmt;
 
 fetch_stmt : C_FETCH K_WHERE K_ACTIONS K_ARE '(' list_actions_stmt ')' (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
 
@@ -57,12 +67,16 @@ list_parameters_stmt : '(' parameter_stmt (K_AND parameter_stmt)* ')';
 parameter_stmt : argument_alias ASSIGN string_expr;
 
 explore_stmt : C_EXPLORE K_WHERE K_SPLITTER ASSIGN literal_value K_ACTIONS K_ARE '(' list_actions_stmt ')' (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
-join_stmt: C_JOIN (select_automatic_stmt | select_static_field_stmt) K_WHERE K_SPLITTER ASSIGN literal_value K_ACTIONS K_ARE '(' list_actions_stmt ')' (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
+
+wgetexplore_stmt : C_EXPLORE K_WHERE K_URL ASSIGN string_expr (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
+
+join_stmt: (K_LEFT | K_INNER)? C_JOIN (select_automatic_stmt | select_static_field_stmt) K_WHERE K_SPLITTER ASSIGN literal_value K_ACTIONS K_ARE '(' list_actions_stmt ')' (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
+wgetjoin_stmt: (K_LEFT | K_INNER)? C_WGETJOIN K_WHERE K_URL ASSIGN string_expr (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
 flatten_stmt: C_FLATTEN K_WHERE K_SPLITTER ASSIGN literal_value (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
 flatselect_stmt: C_FLATSELECT (select_automatic_stmt | select_static_field_stmt) K_WHERE K_SPLITTER ASSIGN literal_value (K_AND K_PARAMETERS K_ARE '(' list_parameters_stmt ')')*;
 select_stmt: C_SELECT select_automatic_stmt | select_static_field_stmt;
 
-select_static_field_stmt : selector_expression K_AS column_alias;
+select_static_field_stmt : selector_expression K_AS column_alias COMMA (selector_expression K_AS column_alias)*;
 
 select_automatic_stmt : K_AUTOMATIC K_WITH (algotype | K_CONCEPT '(' literal_value ')'); 
 
@@ -256,6 +270,10 @@ A_TEXTINPUT : T E X T I N P U T;
 
 //clauses
 
+C_WGETJOIN : W G E T J O I N;
+
+C_WGETEXPLORE : W G E T E X P L O R E;
+
 C_JOIN : J O I N;
 C_VISITJOIN : V I S I T J O I N;
 
@@ -350,12 +368,18 @@ K_IN : I N;
 
 K_TRY : T R Y;
 
-
 K_THEN : T H E N;
 
 K_WHERE : W H E R E;
 K_WITH : W I T H;
+K_LEFT : L E F T;
+K_INNER : I N N E R;
 
+K_CONFIG : C O N F I G;
+K_OAUTHKEYS : O A U T H K E Y S;
+K_KEYS : K E Y S;
+
+K_DEFAULT : D E F A U L T;
 
 IDENTIFIER
  : '"' (~'"' | '""')* '"'

@@ -12,9 +12,9 @@ One of the most important parts is represented by the query engine which is the 
 
 Here is an example:
 
-FETCH WHERE ACTIONS ARE ((action = VISIT AND url = "http://dbpedia.org/page/" + $page AND (action = EXESCRIPT AND id = idScript)
+FETCH WHERE ACTIONS ARE ((action = VISIT AND url ="http://dbpedia.org/page/" + $page AND (action=EXESCRIPT AND id=idScript)
 THEN
-EXPLORE WHERE splitter = PTA AND actions ARE (action = VISIT AND url = PIVOTED (a [rel ^ = dbo "]). Href AND PARAMETERS ARE ((maxDepth = 2)))
+EXPLORE WHERE splitter=PTA AND actions ARE (action=VISIT AND url=PIVOTED(a[rel^=dbo"]).href AND PARAMETERS ARE ((maxDepth=2)))
 THEN
 SELECT AUTOMATIC WITH CONCEPT (idConcept)
 

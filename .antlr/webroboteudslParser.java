@@ -35,9 +35,9 @@ public class webroboteudslParser extends Parser {
 		K_CURRENT=97, K_ACTION=98, K_ACTIONS=99, K_AND=100, K_AS=101, K_FROM=102, 
 		K_IN=103, K_TRY=104, K_THEN=105, K_WHERE=106, K_WITH=107, K_LEFT=108, 
 		K_INNER=109, K_CONFIG=110, K_OAUTHKEYS=111, K_KEYS=112, K_DEFAULT=113, 
-		K_REPLACE_ALL=114, IDENTIFIER=115, NUMERIC_LITERAL=116, BIND_PARAMETER=117, 
-		STRING_LITERAL=118, BLOB_LITERAL=119, SINGLE_LINE_COMMENT=120, MULTILINE_COMMENT=121, 
-		SPACES=122, UNEXPECTED_CHAR=123;
+		K_REPLACE_ALL=114, K_PERSISTE=115, K_LOADMORE=116, IDENTIFIER=117, NUMERIC_LITERAL=118, 
+		BIND_PARAMETER=119, STRING_LITERAL=120, BLOB_LITERAL=121, SINGLE_LINE_COMMENT=122, 
+		MULTILINE_COMMENT=123, SPACES=124, UNEXPECTED_CHAR=125;
 	public static final int
 		RULE_parse = 0, RULE_error = 1, RULE_sql_stmt_list = 2, RULE_istruction_stmt = 3, 
 		RULE_config_oauth_stmt = 4, RULE_config_clause_stmt = 5, RULE_type_clauses = 6, 
@@ -87,9 +87,9 @@ public class webroboteudslParser extends Parser {
 		"K_VISIT", "K_ARE", "K_PARAMETERS", "K_PIVOTED", "K_CURRENT", "K_ACTION", 
 		"K_ACTIONS", "K_AND", "K_AS", "K_FROM", "K_IN", "K_TRY", "K_THEN", "K_WHERE", 
 		"K_WITH", "K_LEFT", "K_INNER", "K_CONFIG", "K_OAUTHKEYS", "K_KEYS", "K_DEFAULT", 
-		"K_REPLACE_ALL", "IDENTIFIER", "NUMERIC_LITERAL", "BIND_PARAMETER", "STRING_LITERAL", 
-		"BLOB_LITERAL", "SINGLE_LINE_COMMENT", "MULTILINE_COMMENT", "SPACES", 
-		"UNEXPECTED_CHAR"
+		"K_REPLACE_ALL", "K_PERSISTE", "K_LOADMORE", "IDENTIFIER", "NUMERIC_LITERAL", 
+		"BIND_PARAMETER", "STRING_LITERAL", "BLOB_LITERAL", "SINGLE_LINE_COMMENT", 
+		"MULTILINE_COMMENT", "SPACES", "UNEXPECTED_CHAR"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -2039,7 +2039,7 @@ public class webroboteudslParser extends Parser {
 				setState(402); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( ((((_la - 116)) & ~0x3f) == 0 && ((1L << (_la - 116)) & ((1L << (NUMERIC_LITERAL - 116)) | (1L << (STRING_LITERAL - 116)) | (1L << (BLOB_LITERAL - 116)))) != 0) );
+			} while ( ((((_la - 118)) & ~0x3f) == 0 && ((1L << (_la - 118)) & ((1L << (NUMERIC_LITERAL - 118)) | (1L << (STRING_LITERAL - 118)) | (1L << (BLOB_LITERAL - 118)))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -2370,7 +2370,7 @@ public class webroboteudslParser extends Parser {
 			{
 			setState(436);
 			_la = _input.LA(1);
-			if ( !(((((_la - 116)) & ~0x3f) == 0 && ((1L << (_la - 116)) & ((1L << (NUMERIC_LITERAL - 116)) | (1L << (STRING_LITERAL - 116)) | (1L << (BLOB_LITERAL - 116)))) != 0)) ) {
+			if ( !(((((_la - 118)) & ~0x3f) == 0 && ((1L << (_la - 118)) & ((1L << (NUMERIC_LITERAL - 118)) | (1L << (STRING_LITERAL - 118)) | (1L << (BLOB_LITERAL - 118)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -3093,9 +3093,9 @@ public class webroboteudslParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3}\u01fb\4\2\t\2\4"+
-		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\177\u01fb\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\3\2\3\2"+
@@ -3131,7 +3131,7 @@ public class webroboteudslParser extends Parser {
 		"&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\5&\u01ea\n&\3\'\3\'\3(\3(\3("+
 		"\3(\3(\3(\3(\5(\u01f5\n(\3)\3)\3*\3*\3*\2\2+\2\4\6\b\n\f\16\20\22\24\26"+
 		"\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPR\2\13\3\2.8\3\2no\3\2D"+
-		"O\3\2RW\3\2\13\f\4\2vvxy\3\2\13\r\4\2uuxx\3\2\34,\2\u0226\2X\3\2\2\2\4"+
+		"O\3\2RW\3\2\13\f\4\2xxz{\3\2\13\r\4\2wwzz\3\2\34,\2\u0226\2X\3\2\2\2\4"+
 		"]\3\2\2\2\6c\3\2\2\2\b{\3\2\2\2\n}\3\2\2\2\f\u0085\3\2\2\2\16\u008e\3"+
 		"\2\2\2\20\u0090\3\2\2\2\22\u0098\3\2\2\2\24\u00af\3\2\2\2\26\u00b1\3\2"+
 		"\2\2\30\u00c4\3\2\2\2\32\u00cf\3\2\2\2\34\u00df\3\2\2\2\36\u00ea\3\2\2"+
@@ -3142,13 +3142,13 @@ public class webroboteudslParser extends Parser {
 		"\u01b8\3\2\2\2F\u01ba\3\2\2\2H\u01bc\3\2\2\2J\u01e9\3\2\2\2L\u01eb\3\2"+
 		"\2\2N\u01f4\3\2\2\2P\u01f6\3\2\2\2R\u01f8\3\2\2\2TW\5\6\4\2UW\5\4\3\2"+
 		"VT\3\2\2\2VU\3\2\2\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y[\3\2\2\2ZX\3\2\2\2"+
-		"[\\\7\2\2\3\\\3\3\2\2\2]^\7}\2\2^_\b\3\1\2_\5\3\2\2\2`b\7\4\2\2a`\3\2"+
-		"\2\2be\3\2\2\2ca\3\2\2\2cd\3\2\2\2df\3\2\2\2ec\3\2\2\2fo\5\b\5\2gi\7\4"+
-		"\2\2hg\3\2\2\2ij\3\2\2\2jh\3\2\2\2jk\3\2\2\2kl\3\2\2\2ln\5\b\5\2mh\3\2"+
-		"\2\2nq\3\2\2\2om\3\2\2\2op\3\2\2\2pu\3\2\2\2qo\3\2\2\2rt\7\4\2\2sr\3\2"+
-		"\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\7\3\2\2\2wu\3\2\2\2x|\5\22\n\2y|\5"+
-		"\n\6\2z|\5\f\7\2{x\3\2\2\2{y\3\2\2\2{z\3\2\2\2|\t\3\2\2\2}~\7p\2\2~\177"+
-		"\7q\2\2\177\u0080\7m\2\2\u0080\u0081\7r\2\2\u0081\u0082\7\6\2\2\u0082"+
+		"[\\\7\2\2\3\\\3\3\2\2\2]^\7\177\2\2^_\b\3\1\2_\5\3\2\2\2`b\7\4\2\2a`\3"+
+		"\2\2\2be\3\2\2\2ca\3\2\2\2cd\3\2\2\2df\3\2\2\2ec\3\2\2\2fo\5\b\5\2gi\7"+
+		"\4\2\2hg\3\2\2\2ij\3\2\2\2jh\3\2\2\2jk\3\2\2\2kl\3\2\2\2ln\5\b\5\2mh\3"+
+		"\2\2\2nq\3\2\2\2om\3\2\2\2op\3\2\2\2pu\3\2\2\2qo\3\2\2\2rt\7\4\2\2sr\3"+
+		"\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\7\3\2\2\2wu\3\2\2\2x|\5\22\n\2y"+
+		"|\5\n\6\2z|\5\f\7\2{x\3\2\2\2{y\3\2\2\2{z\3\2\2\2|\t\3\2\2\2}~\7p\2\2"+
+		"~\177\7q\2\2\177\u0080\7m\2\2\u0080\u0081\7r\2\2\u0081\u0082\7\6\2\2\u0082"+
 		"\u0083\5\20\t\2\u0083\u0084\7\7\2\2\u0084\13\3\2\2\2\u0085\u0086\7p\2"+
 		"\2\u0086\u0087\5\16\b\2\u0087\u0088\7m\2\2\u0088\u0089\7s\2\2\u0089\u008a"+
 		"\7a\2\2\u008a\u008b\7\6\2\2\u008b\u008c\5\34\17\2\u008c\u008d\7\7\2\2"+
@@ -3234,7 +3234,7 @@ public class webroboteudslParser extends Parser {
 		"\3\2\2\2\u018e\u018d\3\2\2\2\u018f\u0191\3\2\2\2\u0190\u018b\3\2\2\2\u0190"+
 		"\u0191\3\2\2\2\u0191\u0193\3\2\2\2\u0192\u018a\3\2\2\2\u0193\u0194\3\2"+
 		"\2\2\u0194\u0192\3\2\2\2\u0194\u0195\3\2\2\2\u0195\65\3\2\2\2\u0196\u0197"+
-		"\7\3\2\2\u0197\u0198\7u\2\2\u0198\67\3\2\2\2\u0199\u019a\7C\2\2\u019a"+
+		"\7\3\2\2\u0197\u0198\7w\2\2\u0198\67\3\2\2\2\u0199\u019a\7C\2\2\u019a"+
 		"\u019b\7\6\2\2\u019b\u019c\5> \2\u019c\u019d\7\7\2\2\u019d9\3\2\2\2\u019e"+
 		"\u019f\t\4\2\2\u019f;\3\2\2\2\u01a0\u01a1\t\5\2\2\u01a1=\3\2\2\2\u01a2"+
 		"\u01b0\7c\2\2\u01a3\u01a4\7b\2\2\u01a4\u01a5\7\6\2\2\u01a5\u01a6\5B\""+
@@ -3243,8 +3243,8 @@ public class webroboteudslParser extends Parser {
 		"\u01ae\5<\37\2\u01ad\u01ab\3\2\2\2\u01ad\u01ae\3\2\2\2\u01ae\u01b0\3\2"+
 		"\2\2\u01af\u01a2\3\2\2\2\u01af\u01a3\3\2\2\2\u01b0?\3\2\2\2\u01b1\u01b3"+
 		"\t\6\2\2\u01b2\u01b1\3\2\2\2\u01b2\u01b3\3\2\2\2\u01b3\u01b4\3\2\2\2\u01b4"+
-		"\u01b5\7v\2\2\u01b5A\3\2\2\2\u01b6\u01b7\t\7\2\2\u01b7C\3\2\2\2\u01b8"+
-		"\u01b9\t\b\2\2\u01b9E\3\2\2\2\u01ba\u01bb\7x\2\2\u01bbG\3\2\2\2\u01bc"+
+		"\u01b5\7x\2\2\u01b5A\3\2\2\2\u01b6\u01b7\t\7\2\2\u01b7C\3\2\2\2\u01b8"+
+		"\u01b9\t\b\2\2\u01b9E\3\2\2\2\u01ba\u01bb\7z\2\2\u01bbG\3\2\2\2\u01bc"+
 		"\u01bd\t\t\2\2\u01bdI\3\2\2\2\u01be\u01ea\7C\2\2\u01bf\u01ea\7D\2\2\u01c0"+
 		"\u01ea\7E\2\2\u01c1\u01ea\7F\2\2\u01c2\u01ea\7G\2\2\u01c3\u01ea\7H\2\2"+
 		"\u01c4\u01ea\7I\2\2\u01c5\u01ea\7J\2\2\u01c6\u01ea\7K\2\2\u01c7\u01ea"+
@@ -3269,8 +3269,8 @@ public class webroboteudslParser extends Parser {
 		"\u01df\3\2\2\2\u01e9\u01e0\3\2\2\2\u01e9\u01e1\3\2\2\2\u01e9\u01e2\3\2"+
 		"\2\2\u01e9\u01e3\3\2\2\2\u01e9\u01e4\3\2\2\2\u01e9\u01e5\3\2\2\2\u01e9"+
 		"\u01e6\3\2\2\2\u01e9\u01e7\3\2\2\2\u01e9\u01e8\3\2\2\2\u01eaK\3\2\2\2"+
-		"\u01eb\u01ec\5N(\2\u01ecM\3\2\2\2\u01ed\u01f5\7u\2\2\u01ee\u01f5\5J&\2"+
-		"\u01ef\u01f5\7x\2\2\u01f0\u01f1\7\6\2\2\u01f1\u01f2\5N(\2\u01f2\u01f3"+
+		"\u01eb\u01ec\5N(\2\u01ecM\3\2\2\2\u01ed\u01f5\7w\2\2\u01ee\u01f5\5J&\2"+
+		"\u01ef\u01f5\7z\2\2\u01f0\u01f1\7\6\2\2\u01f1\u01f2\5N(\2\u01f2\u01f3"+
 		"\7\7\2\2\u01f3\u01f5\3\2\2\2\u01f4\u01ed\3\2\2\2\u01f4\u01ee\3\2\2\2\u01f4"+
 		"\u01ef\3\2\2\2\u01f4\u01f0\3\2\2\2\u01f5O\3\2\2\2\u01f6\u01f7\t\t\2\2"+
 		"\u01f7Q\3\2\2\2\u01f8\u01f9\t\n\2\2\u01f9S\3\2\2\2\'VXcjou{\u0095\u009f"+

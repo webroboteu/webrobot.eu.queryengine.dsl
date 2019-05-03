@@ -385,6 +385,10 @@ K_DEFAULT : D E F A U L T;
 
 K_REPLACE_ALL : R E P L A C E A L L;
 
+K_PERSISTE : P E R S I S T;
+
+K_LOADMORE: L O A D M O R E;
+
 IDENTIFIER
  : '"' (~'"' | '""')* '"'
  | '`' (~'`' | '``')* '`'

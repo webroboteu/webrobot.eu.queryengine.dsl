@@ -46,7 +46,7 @@ sql_stmt_list
 istruction_stmt : query_stmt | config_oauth_stmt | config_clause_stmt;
 config_oauth_stmt : K_CONFIG K_OAUTHKEYS K_WITH K_KEYS '(' list_keys ')';
 
-config_clause_stmt : K_CONFIG type_clauses K_WITH K_PARAMETERS '(' list_parameters_stmt ')';
+config_clause_stmt : K_CONFIG type_clauses K_WITH K_DEFAULT K_PARAMETERS '(' list_parameters_stmt ')';
 
 type_clauses : C_EXPLODE | C_EXPLORE | C_FETCH | C_FLATSELECT | C_FLATTEN | C_JOIN | C_SELECT | C_VISITEXPLORE | C_VISITJOIN | C_WGETEXPLORE | C_WGETJOIN;
 
@@ -270,6 +270,8 @@ A_TEXTINPUT : T E X T I N P U T;
 
 //clauses
 
+C_DISTINCT : D I S T I N C T;
+
 C_WGETJOIN : W G E T J O I N;
 
 C_WGETEXPLORE : W G E T E X P L O R E;
@@ -380,6 +382,8 @@ K_OAUTHKEYS : O A U T H K E Y S;
 K_KEYS : K E Y S;
 
 K_DEFAULT : D E F A U L T;
+
+K_REPLACE_ALL : R E P L A C E A L L;
 
 IDENTIFIER
  : '"' (~'"' | '""')* '"'

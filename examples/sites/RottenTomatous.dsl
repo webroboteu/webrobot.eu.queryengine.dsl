@@ -17,7 +17,7 @@ WGETEXPLORE WHERE splitter = CURRENT(div.scroller a.right) AND PARAMETERS ARE (
     depthKey = $page
 )
 THEN
-FLATSELECT  PIVOTED(div.criticinfo strong a).text AS critic_name,
+FLATSELECT PIVOTED(div.criticinfo strong a).text AS critic_name,
         PIVOTED(div.criticinfo em.subtle).text AS critic_org,
         PIVOTED(div.reviewsnippet p).text AS critic_review,
         PIVOTED(div.reviewsnippet p.subtle).ownText AS critic_score

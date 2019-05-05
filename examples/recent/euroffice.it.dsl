@@ -8,4 +8,4 @@ WGETJOIN WHERE splitter = CURRENT(a.productListItem__link ga-item)
 THEN
 SELECT  CURRENT(span[itemprop="price"]).text AS price,
         CURRENT(h1[itemprox="name"]).text AS name,
-        CURRENT(div[itemprop="description"]).text AS description
+        CURRENT(div[itemprop="description"]).text AS DE
